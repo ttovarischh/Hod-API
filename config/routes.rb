@@ -6,6 +6,27 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :effects
+  get 'welcome/index'
+  resources :games do
+    resources :players
+    resources :monsters
+  end
+  get 'effects/index'
+  get 'games/index'
+
+  post "", to: "welcome#redirect", as: :redirect
+
+  root 'welcome#index'
+
+  scope '/api/v1' do
+    resources :games, only: [:index, :show, :create, :update, :destroy]
+    resources :players
+    resources :effects, only: [:index, :show, :create, :update, :destroy]
+    resources :slug
+    resources :users
+  end
+
   scope :api, defaults: { format: :json } do
     scope :v1 do
       devise_for :users, defaults: { format: :json }, path: '', path_names: {
