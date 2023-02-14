@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  monster: false
+  initiative: 1
+  hp: 1
+  language: MyString
+  perc: 1
+  inv: 1
+  ins: 1
+  armor: 1
+  conc: false
+
+two:
+  name: MyString
+  monster: false
+  initiative: 1
+  hp: 1
+  language: MyString
+  perc: 1
+  inv: 1
+  ins: 1
+  armor: 1
+  conc: false
