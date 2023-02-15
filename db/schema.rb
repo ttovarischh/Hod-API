@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_14_194324) do
+ActiveRecord::Schema.define(version: 2023_02_15_071653) do
 
   create_table "effects", force: :cascade do |t|
     t.string "name"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2023_02_14_194324) do
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.boolean "fight"
-    t.integer "turn"
+    t.boolean "fight", default: false
+    t.integer "turn", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2023_02_14_194324) do
     t.integer "inv"
     t.integer "ins"
     t.integer "armor"
-    t.boolean "conc"
+    t.boolean "conc", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "game_id", null: false
