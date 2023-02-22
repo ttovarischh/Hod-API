@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  namespace :api, defaults: {format: :json} do
-    namespace :v1 do
-      resources :users, only: %i[index show]
-    end
-  end
+  # namespace :api, defaults: {format: :json} do
+  #   namespace :v1 do
+  #     resources :users, only: %i[index show]
+  #   end
+  # end
 
   resources :effects
   get 'welcome/index'
@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     resources :players
     resources :effects, only: [:index, :show, :create, :update, :destroy]
     resources :slug
-    resources :users
+    resources :users, only: %i[index show]
+    # resources :users
   end
 
   scope :api, defaults: { format: :json } do
