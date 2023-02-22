@@ -17,42 +17,52 @@ effects = [
     { 
         name: 'Ослепленный',
         descr: 'Ослеплённое существо ничего не видит и автоматически проваливает все проверки характеристик, связанные со зрением. Броски атаки по такому существу совершаются с преимуществом, а его броски атаки совершаются с помехой.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h2.jpg")
     }, 
     { 
         name: 'Окаменевший',
         descr: 'Ослеплённое существо ничего не видит и автоматически проваливает все проверки характеристик, связанные со зрением. Броски атаки по такому существу совершаются с преимуществом, а его броски атаки совершаются с помехой.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h7.png")
     }, 
     { 
         name: 'Оглохший',
         descr: 'Оглохшее существо ничего не слышит и автоматически проваливает все проверки характеристик, связанные со слухом.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h5.png")
     }, 
     { 
         name: 'Невидимый',
         descr: 'Невидимое существо невозможно увидеть без помощи магии или особого чувства. С точки зрения скрытности существо считается сильно заслонённым. Местонахождение существа можно определить по шуму, который оно издаёт, или по оставленным им следам. Броски атаки по невидимому существу совершаются с помехой, а его броски атаки — с преимуществом.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/circleyo.jpg")
     }, 
     { 
         name: 'Схваченный',
         descr: 'Скорость схваченного существа равна 0, и оно не получает выгоды ни от каких бонусов к скорости. Состояние оканчивается, если схвативший становится недееспособным. Это состояние также оканчивается, если какой-либо эффект выводит схваченное существо из зоны досягаемости того, кто его удерживает, или из зоны удерживающего эффекта. Например, когда существо отбрасывается заклинанием волна грома [thunderwave].',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h3.png")
     }, 
     { 
         name: 'Испуганный',
         descr: 'Испуганное существо совершает с помехой проверки характеристик и броски атаки, пока источник его страха находится в пределах его линии обзора. Существо не способно добровольно приблизиться к источнику своего страха.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h1.png")
     }, 
     { 
         name: 'Опутанный',
         descr: 'Скорость опутанного существа равна 0, и оно не получает выгоды ни от каких бонусов к скорости. Броски атаки по такому существу совершаются с преимуществом, а его броски атаки — с помехой. Существо совершает с помехой спасброски Ловкости.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h6.png")
     }, 
     { 
         name: 'Отравленный',
         descr: 'Отравленное существо совершает с помехой броски атаки и проверки характеристик.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h4.png")
     },
     { 
         name: 'Очарованный',
         descr: 'Находящееся без сознания существо недееспособно, не способно перемещаться и говорить, а также не осознаёт своё окружение. Существо роняет всё, что держит, и падает ничком. Существо автоматически проваливает спасброски Силы и Ловкости. Броски атаки по существу совершаются с преимуществом. Любая атака, попавшая по такому существу, считается критическим попаданием, если нападающий находится в пределах 5 футов от него.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h9.png")
     },
     { 
         name: 'Бессознательный',
         descr: 'Очарованное существо не может атаковать того, кто его очаровал, а также делать его целью умения или магического эффекта, причиняющего вред. Искуситель совершает с преимуществом все проверки характеристик при социальном взаимодействии с очарованным существом.',
+        image: URI.open("https://ttovarischh.github.io/WikiMEDIUMM/images/h8.png")
     }, 
 ]
 
@@ -326,15 +336,15 @@ monsters = [
 
 
 
-users.each do |user|
-    userarray = User.create(user)
-    puts "Some MAGIC just created a #{ userarray.id } with name #{ userarray.email }!"
-end
-
-# effects.each do |effect|
-#     effectarray = Effect.create(effect)
-#     puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
+# users.each do |user|
+#     userarray = User.create(user)
+#     puts "Some MAGIC just created a #{ userarray.id } with name #{ userarray.email }!"
 # end
+
+effects.each do |effect|
+    effectarray = Effect.create(effect)
+    puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
+end
 
 # games.each do |game|
 #     gamearray = Game.create(game)
@@ -350,5 +360,6 @@ end
 #     monsterarray = Monster.create(monster)
 #     puts "Some MAGIC just created a #{ monsterarray.id } with name #{ monsterarray.name }!"
 # end
+
 
 
