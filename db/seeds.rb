@@ -61,46 +61,55 @@ users = [
         email: 'polinasot@gmail.com',
         password: 'polinka6677',
         password_confirmation: 'polinka6677',
+        username: 'ttovarishh',
     }, 
     { 
         email: 'kauzt@mail.ru',
         password: 'topsecret',
         password_confirmation: 'topsecret',
+        username: 'kauzt',
     }, 
     { 
         email: 'nadyuha@yandex.ru',
         password: 'coolgirl',
         password_confirmation: 'coolgirl',
+        username: 'nadyakit',
     }, 
     { 
         email: 'vadim@yahoo.com',
         password: 'genius',
         password_confirmation: 'genius',
+        username: 'm1d45',
     }, 
     { 
         email: 'tesspot@yandex.ru',
         password: 'mmm1010',
         password_confirmation: 'mmm1010',
+        username: 'tesspot',
     }, 
     { 
         email: 'krutaya@edu.hse.ru',
         password: 'loveher',
         password_confirmation: 'loveher',
+        username: 'abarabonova',
     }, 
     { 
         email: 'master@yandex.ru',
         password: 'master',
         password_confirmation: 'master',
+        username: 'master',
     }, 
     { 
         email: 'dead@edu.hse.ru',
         password: 'killmeh',
         password_confirmation: 'killmeh',
+        username: 'killmeh',
     }, 
     { 
         email: 'good@mail.ru',
         password: 'rubyonrails',
         password_confirmation: 'rubyonrails',
+        username: 'atarax',
     }, 
 ]
 
@@ -322,24 +331,24 @@ users.each do |user|
     puts "Some MAGIC just created a #{ userarray.id } with name #{ userarray.email }!"
 end
 
-effects.each do |effect|
-    effectarray = Effect.create(effect)
-    puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
-end
+# effects.each do |effect|
+#     effectarray = Effect.create(effect)
+#     puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
+# end
 
-games.each do |game|
-    gamearray = Game.create(game)
-    puts "Some MAGIC just created a #{ gamearray.id } with name #{ gamearray.name }!"
-end
+# games.each do |game|
+#     gamearray = Game.create(game)
+#     puts "Some MAGIC just created a #{ gamearray.id } with name #{ gamearray.name }!"
+# end
 
-players.each do |player|
-    playerarray = Player.create(player)
-    puts "Some MAGIC just created a #{ playerarray.id } with name #{ playerarray.name }!"
-end
+# players.each do |player|
+#     playerarray = Player.create(player)
+#     puts "Some MAGIC just created a #{ playerarray.id } with name #{ playerarray.name }!"
+# end
 
-monsters.each do |monster|
-    monsterarray = Monster.create(monster)
-    puts "Some MAGIC just created a #{ monsterarray.id } with name #{ monsterarray.name }!"
-end
+# monsters.each do |monster|
+#     monsterarray = Monster.create(monster)
+#     puts "Some MAGIC just created a #{ monsterarray.id } with name #{ monsterarray.name }!"
+# end
 
 
