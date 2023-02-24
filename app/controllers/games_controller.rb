@@ -27,7 +27,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
-    @game.code = gen_name
+    # @game.code = gen_name
   end
 
   def gen_name
@@ -41,16 +41,26 @@ class GamesController < ApplicationController
   # POST /games or /games.json
   def create
     @game = Game.new(game_params.merge(user_id: current_user.id))
+    @game.code = gen_name
 
-    respond_to do |format|
-      if @game.save
-        format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
-        format.json { render :show, status: :created, location: @game }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
+    if @game.save
+      render json: @game
+    else
+      render json: @game.errors, status: :unprocessable_entity
     end
+
+    # respond_to do |format|
+    #   if @game.save
+    #     format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
+    #     format.json { render :show, status: :created, location: @game }
+    #     format.json { 
+    #       render json: game
+    #     }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @game.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /games/1 or /games/1.json
