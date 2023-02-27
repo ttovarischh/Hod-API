@@ -11,5 +11,5 @@ class Game < ApplicationRecord
 
     def self.find_by_param(code)
         find_by_code(code)
-      end
+    end
 end

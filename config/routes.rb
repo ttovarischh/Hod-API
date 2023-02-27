@@ -1,31 +1,22 @@
 Rails.application.routes.draw do
-  
-  # namespace :api, defaults: {format: :json} do
-  #   namespace :v1 do
-  #     resources :users, only: %i[index show]
-  #   end
-  # end
-
-  resources :effects
   get 'welcome/index'
+  get 'effects/index'
+  get 'games/index'
+  post "", to: "welcome#redirect", as: :redirect
+  root 'welcome#index'
+
   resources :games do
     resources :players
     resources :monsters
   end
-  get 'effects/index'
-  get 'games/index'
-
-  post "", to: "welcome#redirect", as: :redirect
-
-  root 'welcome#index'
 
   scope '/api/v1' do
-    resources :games, only: [:index, :show, :create, :update, :destroy]
-    resources :players
+    resources :games, only: [:index, :show, :create, :update, :destroy] do
+      resources :players, only: [:index, :show, :create, :update, :destroy]
+    end
     resources :effects, only: [:index, :show, :create, :update, :destroy]
     resources :slug
     resources :users, only: %i[index show]
-    # resources :users
   end
 
   scope :api, defaults: { format: :json } do

@@ -43,6 +43,8 @@ class GamesController < ApplicationController
     @game = Game.new(game_params.merge(user_id: current_user.id))
     @game.code = gen_name
 
+    logger.debug("@@@@ params: #{params}")
+
     if @game.save
       render json: @game
     else
