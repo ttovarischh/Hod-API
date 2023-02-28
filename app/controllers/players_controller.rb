@@ -32,7 +32,7 @@ class PlayersController < ApplicationController
 	def player_params
 	  params.require(:player)
 			.permit(
-			   :name, :hp, :initiative, :languages, 
+			   :name, :hp, :initiative, :language, 
 			   :perc, :inv, :ins, :armor, :conc
 			)
 	end

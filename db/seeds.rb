@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Effect.destroy_all
-User.destroy_all
+# Effect.destroy_all
+# User.destroy_all
 Game.destroy_all
 Player.destroy_all
 Monster.destroy_all
@@ -414,30 +414,30 @@ monsters = [
 
 
 
-users.each do |user|
-    userarray = User.create(user)
-    puts "Some MAGIC just created a #{ userarray.id } with name #{ userarray.email }!"
-end
+# users.each do |user|
+#     userarray = User.create(user)
+#     puts "Some MAGIC just created a #{ userarray.id } with name #{ userarray.email }!"
+# end
 
-effects.each do |effect|
-    effectarray = Effect.create(effect)
-    puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
-end
+# effects.each do |effect|
+#     effectarray = Effect.create(effect)
+#     puts "Some MAGIC just created a #{ effectarray.id } with name #{ effectarray.name }!"
+# end
 
-games.each do |game|
-    gamearray = Game.create(game)
-    puts "Some MAGIC just created a #{ gamearray.id } with name #{ gamearray.name }!"
-end
+# games.each do |game|
+#     gamearray = Game.create(game)
+#     puts "Some MAGIC just created a #{ gamearray.id } with name #{ gamearray.name }!"
+# end
 
-players.each do |player|
-    playerarray = Player.create(player)
-    puts "Some MAGIC just created a #{ playerarray.id } with name #{ playerarray.name }!"
-end
+# players.each do |player|
+#     playerarray = Player.create(player)
+#     puts "Some MAGIC just created a #{ playerarray.id } with name #{ playerarray.name }!"
+# end
 
-monsters.each do |monster|
-    monsterarray = Monster.create(monster)
-    puts "Some MAGIC just created a #{ monsterarray.id } with name #{ monsterarray.name }!"
-end
+# monsters.each do |monster|
+#     monsterarray = Monster.create(monster)
+#     puts "Some MAGIC just created a #{ monsterarray.id } with name #{ monsterarray.name }!"
+# end
 
 
 

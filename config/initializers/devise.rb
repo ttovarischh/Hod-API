@@ -36,7 +36,7 @@ Devise.setup do |config|
     ]
     # jwt.expiration_time sets the expiration time for the generated token
     # Defaults expiration_time is 3600 seconds (1 hour). 
-    jwt.expiration_time = 1.minutes.to_i
+    # jwt.expiration_time = 1.minutes.to_i
   end
 
   # Configure the class responsible to send e-mails.
