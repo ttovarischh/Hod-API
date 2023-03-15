@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.secret = "r2Zv1VN5qX5yuy5mlUbhn9zou5dsBVaTYqHrQ/VyhxZdlRHdqzwTJS+2qepa84O8flXwz+Vsray5//rfVXj47qsiVKK5n5c5wxhxSvjNdgsFB7yNTPr/EbB9wRyXhTV7Q7NMCsdfH5SLBlinxoSPNS49fHlZdjcmbh8knAewYi9aSnlYdZRgxS0sn8EiAn+WqkaHHMN+RyWiCv0mhebG3tNkEl4k/Lc/C3dhHNUIUDNO4+Y7LcZdwFEq9Q+Edjd/z6hd0C1S7CqnGGpXowxx2kSKtchGsT2OSNevnoghTUB2wlfcR2yDOMhY6/ipz0J6i0FYtVVdToyOn96pMX6GkGzmKB5qjLKMbqPczFMuqBq878aSM/0npDZN/+dWxr59ummIgldMD0Uz2SdWE5zhLjTlYfiYuEzDMov3--RXlF0tw12IY+59oG--lNZdzz/30spTtkdnPWzOvQ=="
     jwt.dispatch_requests = [
       ['POST', %r{^/login$}]
     ]

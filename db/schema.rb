@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_28_103303) do
+ActiveRecord::Schema.define(version: 2023_03_15_172419) do
 
   create_table "effects", force: :cascade do |t|
     t.string "name"
@@ -45,16 +45,16 @@ ActiveRecord::Schema.define(version: 2023_02_28_103303) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "initiative"
-    t.integer "hp"
     t.string "language"
     t.integer "perc"
     t.integer "inv"
     t.integer "ins"
-    t.integer "armor"
     t.boolean "conc", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "game_id", null: false
+    t.string "username"
+    t.string "imagestring"
     t.index ["game_id"], name: "index_players_on_game_id"
   end
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_103303) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "jti"
     t.string "username"
+    t.string "about"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
