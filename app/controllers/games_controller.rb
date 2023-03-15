@@ -16,8 +16,6 @@ class GamesController < ApplicationController
 
   # GET /games/1 or /games/1.json
   def show
-    # @game = Game.find_by_slug(params[:code])
-    # @game = Game.all
     @game = set_game
 
     render json: @game, include: [:players, :monsters]
@@ -27,7 +25,6 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
-    # @game.code = gen_name
   end
 
   def gen_name
@@ -50,19 +47,6 @@ class GamesController < ApplicationController
     else
       render json: @game.errors, status: :unprocessable_entity
     end
-
-    # respond_to do |format|
-    #   if @game.save
-    #     format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
-    #     format.json { render :show, status: :created, location: @game }
-    #     format.json { 
-    #       render json: game
-    #     }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @game.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /games/1 or /games/1.json
@@ -72,16 +56,6 @@ class GamesController < ApplicationController
     else
       render json: @game.errors, status: :unprocessable_entity
     end
-
-    # respond_to do |format|
-    #   if @game.update(game_params)
-    #     format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
-    #     format.json { render :show, status: :ok, location: @game }
-    #   else
-    #     format.html { render :edit, status: :unprocessable_entity }
-    #     format.json { render json: @game.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /games/1 or /games/1.json
@@ -97,9 +71,7 @@ class GamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
-      # @game = Game.find_by_slug(params[:code])
       @game = Game.find_by_code(params[:id])
-      # @game = Game.find_by(code: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
