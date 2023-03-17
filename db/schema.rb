@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_15_184147) do
+ActiveRecord::Schema.define(version: 2023_03_17_142623) do
 
   create_table "effects", force: :cascade do |t|
     t.string "name"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2023_03_15_184147) do
     t.string "jti"
     t.string "username"
     t.string "about"
+    t.string "sex", default: "male"
+    t.string "show", default: "count"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
