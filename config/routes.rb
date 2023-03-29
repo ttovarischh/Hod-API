@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
     resources :effects, only: [:index, :show, :create, :update, :destroy]
     resources :slug
-    resources :users, only: %i[index show]
+    resources :users, only: %i[index show update]
   end
 
   scope :api, defaults: { format: :json } do
