@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :monsters
   end
 
+  mount ActionCable.server => '/cable'
+
   scope '/api/v1' do
     resources :games, only: [:index, :show, :create, :update, :destroy] do
       resources :players, only: [:index, :show, :create, :update, :destroy]

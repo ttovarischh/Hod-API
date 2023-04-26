@@ -43,9 +43,15 @@ class GamesController < ApplicationController
     logger.debug("@@@@ params: #{params}")
 
     if @game.save
+      # broadcast an event using ActionCable
+      ActionCable.server.broadcast('GamesChannel', {
+        id: @game.id,
+        name: @game.name
+      })
+      # return the game data as JSON
       render json: @game
     else
-      render json: @game.errors, status: :unprocessable_entity
+      render json: { errors: @game.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -77,5 +83,23 @@ class GamesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def game_params
       params.require(:game).permit(:code, :name, :fight, :user_id, :turn, :active)
+    end
+
+    def current_user
+      @current_user
+    end
+
+    def authenticate_user!
+      session_token = params[:session]
+  
+      if session_token.present?
+        payload = JWT.decode(session_token, Rails.application.secrets.secret_key_base).first
+        user_id = payload["user_id"]
+        @current_user = User.find_by(id: user_id)
+      end
+  
+      render json: { error: "Unauthorized" }, status: :unauthorized unless @current_user
+    rescue JWT::DecodeError
+      render json: { error: "Invalid token" }, status: :unauthorized
     end
 end

@@ -23,19 +23,19 @@ class EffectsController < ApplicationController
     # GET /effects/1/edit
     def edit
     end
-  
-    # POST /effects or /effects.json
+
+  # POST /messages
     def create
-      @effect = Effect.new(effect_params)
-  
-      respond_to do |format|
-        if @effect.save
-          format.html { redirect_to effect_url(@effect), notice: "Effect was successfully created." }
-          format.json { render :show, status: :created, location: @effect }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @effect.errors, status: :unprocessable_entity }
-        end
+      @effect = Effect.create(effect_params)
+
+      if @effect.save
+        ActionCable.server.broadcast('EffectsChannel', {
+          id: @effect.id,
+          name: @effect.name
+        })
+        head :ok
+      else
+        render json: @effect.errors, status: :unprocessable_entity
       end
     end
   
