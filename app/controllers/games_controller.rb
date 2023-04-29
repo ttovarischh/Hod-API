@@ -4,7 +4,7 @@ PREFACE_SIZE = 2
 SUFFIX_SIZE  = 3
 
 class GamesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :update]
   before_action :set_game, only: %i[ show edit update destroy ]
   respond_to :json
 
@@ -15,12 +15,16 @@ class GamesController < ApplicationController
   end
 
   # GET /games/1 or /games/1.json
+  # def show
+  #   @game = set_game
+  #   render json: @game, include: [{ players: { include: :effects } }, :monsters]
+  # end
+
   def show
     @game = set_game
-
-    render json: @game, include: [:players, :monsters]
-    @qr = RQRCode::QRCode.new(game_url)
+    render json: @game, include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]
   end
+      # @qr = RQRCode::QRCode.new(game_url)
 
   # GET /games/new
   def new

@@ -1,23 +1,19 @@
 class PlayersController < ApplicationController
     before_action :set_game
-  
-    # POST /api/v1/games/AB123/players
-    # def create
-    #   @player = @game.players.new(player_params)
-    #   if @player.save
-    #     ActionCable.server.broadcast('PlayersChannel', {
-    #       id: @player.id,
-    #       name: @player.name,
-    #       game_code: @game.code
-    #     })
-    #     render json: @player,
-    #            status: :created 
-    #   else
-    #     render json: { errors: @player.errors.full_messages },
-    #            status: :unprocessable_entity
-    #   end
-    # end
 
+    # GET /api/v1/games/AB123/players
+    def index
+        @players = @game.players
+        render json: @players
+    end
+  
+    # GET /effects/1 or /effects/1.json
+    def show
+        @player = Player.find(params[:id])
+        render json: @player.as_json(include: :effects), status: :ok
+    end
+
+    # POST /api/v1/games/AB123/players
     def create
       @player = @game.players.new(player_params)
       if @player.save
@@ -33,35 +29,34 @@ class PlayersController < ApplicationController
       end
     end
 
-    # def create
-    #   message = Message.new(message_params)
-    #   conversation = Conversation.find(message_params[:conversation_id])
-    #   if message.save
-    #     serialized_data = ActiveModelSerializers::Adapter::Json.new(
-    #       MessageSerializer.new(message)
-    #     ).serializable_hash
-    #     MessagesChannel.broadcast_to conversation, serialized_data
-    #     head :ok
-    #   end
-    # end
-  
-    # GET /api/v1/games/AB123/players
-    def index
-      @players = @game.players
-      render json: @players
+    def add_effect
+      player = Player.find(params[:id])
+      effect = Effect.find(params[:effect_id])
+      player.effects << effect
+      ActionCable.server.broadcast "PlayereffectsChannel", { type: "ADD_EFFECT", payload: { player_id: player.id, effect: effect } }
+      render json: player, status: :ok
     end
 
-    # GET /effects/1 or /effects/1.json
-    def show
-        @player = Player.find(params[:id])
-        render json: @player
+    # DELETE /api/v1/games/AB123/players/1/effects
+    def remove_effect
+      @player = Player.find(params[:player_id])
+      @effect = @player.effects.find(params[:effect_id])
+      @player.effects.delete(@effect)
+      ActionCable.server.broadcast "PlayereffectsChannel", { type: "REMOVE_EFFECT", payload: { player_id: @player.id, effect: @effect } }
+      render json: { message: 'Effect deleted successfully' }
+    end
+
+    def effects
+      @player = Player.find(params[:player_id])
+      effects = @player.effects
+      render json: effects
     end
 
     # PATCH/PUT /api/v1/players/1
     def update
         @player = Player.find(params[:id])
         if @player.update(player_params)
-            render json: @player
+            render json: @player.as_json(include: :effects), status: :ok
         else
             render json: @player.errors, status: :unprocessable_entity
         end

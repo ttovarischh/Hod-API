@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_17_142623) do
+ActiveRecord::Schema.define(version: 2023_04_29_093846) do
 
   create_table "effects", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 2023_03_17_142623) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+  end
+
+  create_table "effects_monsters", id: false, force: :cascade do |t|
+    t.integer "monster_id", null: false
+    t.integer "effect_id", null: false
+    t.index ["effect_id", "monster_id"], name: "index_effects_monsters_on_effect_id_and_monster_id"
+    t.index ["monster_id", "effect_id"], name: "index_effects_monsters_on_monster_id_and_effect_id"
+  end
+
+  create_table "effects_players", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "effect_id", null: false
+    t.index ["effect_id", "player_id"], name: "index_effects_players_on_effect_id_and_player_id"
+    t.index ["player_id", "effect_id"], name: "index_effects_players_on_player_id_and_effect_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -39,12 +53,14 @@ ActiveRecord::Schema.define(version: 2023_03_17_142623) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "game_id", null: false
+    t.integer "armor"
+    t.boolean "conc", default: false
     t.index ["game_id"], name: "index_monsters_on_game_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "initiative"
+    t.integer "initiative", default: 0
     t.string "language"
     t.integer "perc"
     t.integer "inv"
