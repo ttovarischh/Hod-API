@@ -18,11 +18,7 @@ class PlayersController < ApplicationController
       @player = @game.players.new(player_params)
       if @player.save
         puts "Broadcasting player with game code: #{@game_code}"
-        ActionCable.server.broadcast('PlayersChannel', {
-          id: @player.id,
-          name: @player.name,
-          game_code: @game.code
-        })
+        ActionCable.server.broadcast('GamesChannel', @game.as_json(include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]))
         render json: @player, status: :created
       else
         render json: { errors: @player.errors.full_messages }, status: :unprocessable_entity
@@ -54,12 +50,13 @@ class PlayersController < ApplicationController
 
     # PATCH/PUT /api/v1/players/1
     def update
-        @player = Player.find(params[:id])
-        if @player.update(player_params)
-            render json: @player.as_json(include: :effects), status: :ok
-        else
-            render json: @player.errors, status: :unprocessable_entity
-        end
+      @player = Player.find(params[:id])
+      if @player.update(player_params)
+          ActionCable.server.broadcast('GamesChannel', @game.as_json(include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]))
+          render json: @player.as_json(include: :effects), status: :ok
+      else
+          render json: @player.errors, status: :unprocessable_entity
+      end
     end
   
     private
@@ -72,7 +69,7 @@ class PlayersController < ApplicationController
             .permit(
                :name, :hp, :initiative, :language, 
                :perc, :inv, :ins, :armor, :conc,
-               :username, :imagestring, :id
+               :username, :imagestring, :id, :active
             )
     end
   end

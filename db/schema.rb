@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_29_093846) do
+ActiveRecord::Schema.define(version: 2023_04_30_075233) do
 
   create_table "effects", force: :cascade do |t|
     t.string "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2023_04_29_093846) do
     t.integer "game_id", null: false
     t.integer "armor"
     t.boolean "conc", default: false
+    t.boolean "active", default: false
     t.index ["game_id"], name: "index_monsters_on_game_id"
   end
 
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 2023_04_29_093846) do
     t.integer "game_id", null: false
     t.string "username"
     t.string "imagestring"
+    t.boolean "active", default: false
     t.index ["game_id"], name: "index_players_on_game_id"
   end
 

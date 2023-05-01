@@ -15,11 +15,6 @@ class GamesController < ApplicationController
   end
 
   # GET /games/1 or /games/1.json
-  # def show
-  #   @game = set_game
-  #   render json: @game, include: [{ players: { include: :effects } }, :monsters]
-  # end
-
   def show
     @game = set_game
     render json: @game, include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]
@@ -62,6 +57,7 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 or /games/1.json
   def update
     if @game.update(game_params)
+      ActionCable.server.broadcast('GamesChannel', @game.as_json(include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]))
       render json: @game
     else
       render json: @game.errors, status: :unprocessable_entity

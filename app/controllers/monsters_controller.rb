@@ -19,6 +19,7 @@ class MonstersController < ApplicationController
 		else
 		  @monster = @game.monsters.new(monster_params)
 		  if @monster.save
+			ActionCable.server.broadcast('GamesChannel', @game.as_json(include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]))
 			render json: @monster, status: :created
 		  else
 			render json: { errors: @monster.errors.full_messages }, status: :unprocessable_entity
@@ -29,6 +30,7 @@ class MonstersController < ApplicationController
 	def update
         @monster = Monster.find(params[:id])
         if @monster.update(monster_params)
+			ActionCable.server.broadcast('GamesChannel', @game.as_json(include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]))
             render json: @monster.as_json(include: :effects), status: :ok
         else
             render json: @monster.errors, status: :unprocessable_entity
@@ -69,7 +71,7 @@ class MonstersController < ApplicationController
     def monster_params
       params.require(:monster)
             .permit(
-               :name, :initiative, :hp, :armor
+               :name, :initiative, :hp, :armor, :active
             )
     end
 end
