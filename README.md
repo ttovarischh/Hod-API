@@ -1,24 +1,20 @@
-# README
+# HOD BACKEND
+Ruby on Rails part for the best D&amp;D tracker ever → → →<br>
+<i>HOD is an ios&web app for tracking initiative, number of moves and ongoing states for D&amp;D players.<br>The application counts all the necessary numbers for master, allows players to synchronously follow the game process and makes your hobby more accessible than ever.</i>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Σ>―(〃°ω°〃)♡→
 
-Things you may want to cover:
+Our long journey → → →<br>
 
-* Ruby version
+1/ <a href="https://portfolio.hse.ru/Project/168785">INTERFACE</a><br>
+2/ <a href="https://portfolio.hse.ru/Project/161194">IDENTITY</a><br>
+3/ <a href="https://portfolio.hse.ru/Project/149630">BRAND PLATFORM & IDEA</a>
 
-* System dependencies
+Our code&design team → → →<br>
+A/ <a href="https://hsedesign.ru/designer/fcf7466f5b72474c982ecf2c7d5b9c70">Efremova Maria</a><br>
+B/ <a href="https://hsedesign.ru/designer/c968d54daa194b508e2d136bd75b77c4">Sysolyatina Nadya</a><br>
+C/ <a href="https://hsedesign.ru/designer/a655cbba3c694d74a2827f83a308dcba">Sotnikova Polina</a><br>
 
-* Configuration
+σ(￣、￣〃)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Keep it rolling!
