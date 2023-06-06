@@ -71,7 +71,7 @@ class MonstersController < ApplicationController
     def monster_params
       params.require(:monster)
             .permit(
-               :name, :initiative, :hp, :armor, :active
+               :name, :initiative, :hp, :armor, :active, :conc
             )
     end
 end

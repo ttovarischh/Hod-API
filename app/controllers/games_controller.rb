@@ -19,7 +19,6 @@ class GamesController < ApplicationController
     @game = set_game
     render json: @game, include: [{ players: { include: :effects } }, { monsters: { include: :effects } }]
   end
-      # @qr = RQRCode::QRCode.new(game_url)
 
   # GET /games/new
   def new

@@ -13,6 +13,13 @@ class PlayersController < ApplicationController
         render json: @player.as_json(include: :effects), status: :ok
     end
 
+    # DELETE /api/v1/games/AB123/players/1
+    def destroy
+      @player = Player.find(params[:id])
+      @player.destroy
+      render json: { message: 'Player deleted successfully' }
+    end
+
     # POST /api/v1/games/AB123/players
     def create
       @player = @game.players.new(player_params)
