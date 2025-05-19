@@ -26,6 +26,65 @@ The application counts all the necessary numbers for the master, allows players 
 
 ## 🧾 SETUP INSTRUCTIONS FOR THIS PROJECT
 
+### 1. Install Ruby on Rails
+
+**💻 For Windows:**
+1. Go to [guides.rubyonrails.org](https://guides.rubyonrails.org/install_ruby_on_rails.html#install-ruby-on-windows).
+2. Follow the instructions for Windows
+3. Verify your Ruby install
+```
+$ ruby --version
+ruby 3.3.6
+```
+3. Install Rails from the same instruction
+4. Verify that Rails is installed correctly
+```
+$ rails --version
+Rails 8.0.0
+```
+
+
+**🍎 For Mac:**
+1. Go to [guides.rubyonrails.org](https://guides.rubyonrails.org/install_ruby_on_rails.html#install-ruby-on-windows).
+2. Follow the instructions for Mac
+3. Verify your Ruby install
+```
+$ ruby --version
+ruby 3.3.6
+```
+3. Install Rails from the same instruction
+4. Verify that Rails is installed correctly
+```
+$ rails --version
+Rails 8.0.0
+```
+
+**Important note: this project uses Ruby 2.6.10. If u have any problems launching project, try downgrading to 2.6.10.**
+
+### 2. Clone the project
+If you haven't done this yet, go to the folder where you want to keep the code and run:
+
+```
+cd destination-folder-name
+git clone https://github.com/ttovarischh/this-repo-name.git
+```
+
+(Or just download the zip from GitHub and unzip it)
+
+### 3. Launch project
+1. Open your terminal (Mac) or Ubuntu terminal (Windows).
+2. Go to repository location, for example for me it's:
+```
+cd /mnt/c/Users/User/Documents/Hod-API
+```
+3. Download all dependencies with:
+```
+$ bundle install
+```
+4. rails s I guess
+
+
+
 σ(￣、￣〃)
 
 Keep it rolling!
