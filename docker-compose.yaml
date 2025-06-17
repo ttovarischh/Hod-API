@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  hod-api:
+    image: hod-api:0.0.1
+    ports:
+      - "3000:3000"
+    environment:
+      # This param may be as "production" & "development"
+      - RAILS_ENV=production
+      - CORS_ORIGINS=http://localhost
+      - REDIS_URL=redis://:password@redis:6379/0
+      - SECRET_KEY_BASE=5881c14dc51563a1a242cb77c5873ad66f6c2dd0bee006e501a0f2991a0e2607f04364c6cbd2b429be29e9768715dc2e1bab2f473b2121a9b9a53c44d6dff6c8
+    depends_on:
+      - redis
+    command: >
+      sh -c "rails db:create db:migrate db:seed && rails s -b 0.0.0.0"
+    volumes:
+      - .:/app
+  redis:
+    image: redis:7
+    command: redis-server --requirepass password
+    ports:
+      - "6379:6379"
